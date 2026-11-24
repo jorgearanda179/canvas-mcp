@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "canvas-mcp-alumno"
+version = "0.1.0"
+description = "Servidor MCP para consultar Canvas LMS (tareas, notas, material, anuncios) y entregar con candado desde Claude u otro cliente MCP."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Jorge Aranda" }]
+keywords = ["mcp", "canvas", "canvas-lms", "claude", "model-context-protocol"]
+dependencies = [
+    "mcp>=2.0,<3",
+    "tzdata; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+canvas-mcp = "canvas_mcp.server:main"
+
+[project.urls]
+Repository = "https://github.com/jorgearanda179/canvas-mcp"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
